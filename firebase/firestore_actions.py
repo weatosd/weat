@@ -34,3 +34,19 @@ def checkDocument(docPath):
     doc_ref = db.document(docPath)
 
     return doc_ref.get().exists
+
+def addOrder(itemName):
+    db = firestore.client()
+
+    #first, make sure the item exists
+    doc_ref = db.collection('root/items/itemList').where(u'name', u'==', itemName)
+
+    stream = doc_ref.stream()
+
+    for doc in stream:
+        print("hello")
+
+
+
+    # doc = doc_ref.get()
+

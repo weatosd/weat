@@ -33,8 +33,14 @@ def test_restaurantList():
 
     assert len(section) == len(validation) 
 
+def test_orderItem():
+
+    for item in itemNames:
+        firestore_actions.addOrder(item)
+
 
 # test_init()
 # test_restaurantList()
 # test_documents_exists()
+test_orderItem()
 
