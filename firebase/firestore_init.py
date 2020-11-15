@@ -10,7 +10,7 @@ import random
 # import google_cloud_firestore 
 from google.cloud import firestore as fs
 
-cred = credentials.Certificate("./keys/firebaseAdminAuth.json")
+cred = credentials.Certificate('./keys/firebaseAdminAuth.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
