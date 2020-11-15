@@ -1,8 +1,12 @@
+dist: xenial
 language: python
-python:
-        - "3.6"
+python: 3.7
+cache: pypi
+
 install:
-        - pip install -r requirements.txt
+  - echo "no dependencies"
+
 script:
-        - pytest
- 
+  - python3 -m pytest -vvv firebase/
+
+branches:
