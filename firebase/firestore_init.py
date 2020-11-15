@@ -62,6 +62,8 @@ def init():
     #build restaurants document
     items_Ref = db.collection(u'root').document(u'items')
 
+    orders_Ref = db.collection(u'root').document(u'orders')
+
 
     rst_Ref.set({
         u'id' : u'restaurants',
@@ -71,6 +73,11 @@ def init():
     items_Ref.set({
         u'id' : u'items',
         u'numItems' : 0
+    })
+
+    orders_Ref.set({
+        u'id' : u'orders',
+        u'numOrders' : 0
     })
 
     data = getData()
@@ -106,51 +113,7 @@ def init():
                 u'price' : item['price']
             })
 
-def getRandomItem():
-
-    # restaurants_ref = db.document('root/restaurants')
-
-    # num_rst = restaurants_ref.numRestaurants
-
-    # rand_num = random.randint(0,num_rst)
-
-    # rst_stream = restaurants_ref.collection('rstList').stream()
-
-    # for idx, doc in enumerate(rst_stream):
-    #     if(idx)
-
-
-    rst_list = db.collection('root/restaurants/rstList').stream()
-
-
-
-    
-
-
-
-
-def getItem(mode):
-
-    if mode == 'random':
-        getRandomItem()
-    else:
-        # rst_list = db.collection('root/restaurants/rstList')
-        print("random item")
-        # s = rst_list.stream()
-        # print(s[0])
-
-        # docs = db.collection(u'cities').stream()
-
-        # for doc in docs:
-        #     print(f'{doc.id} => {doc.to_dict()}')
-
-    # for doc in s:
-
-def addTestOrders():
-    item = getItem('random')
-
 if __name__ == "__main__":
-    print("hello")
     init()
     # addTestOrders()
 
