@@ -6,6 +6,6 @@ cache: pypi
 install:
 
 script:
-  - python3 -m pytest -vvv firebase/
+  - python3 -m pytest -vvv src/
 
 branches:
