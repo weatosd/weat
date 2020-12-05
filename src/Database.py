@@ -17,5 +17,9 @@ class Database:
     def __init__(self,):
         with open('defaultConfig.json') as json_file: 
             self.data = json.load(json_file) 
-        
-        print(self.data)
+    
+    def addCustomer(self,name,address):
+        newCustomer = {}
+        newCustomer['name'] = name
+        newCustomer['address'] = address
+        data['customer'].append(newCustomer)
