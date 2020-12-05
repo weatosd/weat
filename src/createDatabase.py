@@ -1,8 +1,9 @@
-from uuid import *
 import json
 import faker
-import random
+from uuid import uuid4
+import json
 import time
+import random
 
 fake = faker.Faker()
 
@@ -61,15 +62,8 @@ for cust in customers:
 
 
 
-
-
-# random.choice(list(d.values()))
-
 root = {'customers': customers, 'restaurants': restaurants, 'items': items, 'orders': orders}
-
-
-
 jsonData = json.dumps(root)
-
-f = open('defauleConfigFile.json', 'w')
+f = open('defaultConfig.json', 'w')
 f.write(jsonData)
+f.close()
