@@ -44,6 +44,36 @@ class Database:
         self.data['ids'].append(newId)
         self.data['restaurants'].append(newRestaurant)
         return newRestaurant
+    def addItem(self, restId, name, price):
+        ids = self.data['ids']
+        if restId not in ids:
+            raise Exception('invalid parameters')
+
+        newItem = {}
+        newItem['id'] = self.generateId()
+        newItem['restId'] = restId
+        newItem['name'] = name
+        newItem['price'] = price
+
+        self.data['items'].append(newItem)
+        self.data['ids'].append(newItem['id'])
+
+
+    
+    def addOrder(self, custId, restId, itemId, timestamp):
+        ids = self.data['ids']
+        if itemId not in ids or custId not in ids or restId not in ids:
+            raise Exception('invalid parameters')
+
+        newOrder = {}
+        newOrder['id'] = self.generateId()
+        newOrder['custId'] = custId
+        newOrder['restId'] = restId
+        newOrder['itemId'] = itemId
+        newOrder['timestamp'] = timestamp
+
+        self.data['orders'].append(newOrder)
+        self.data['ids'].append(newOrder['id'])
 
     def removeCustomer(self, id):
         custToReturn = None
@@ -125,36 +155,27 @@ class Database:
         self.data['ids'].remove(id)
       
 
-    def addItem(self, restId, name, price):
-        ids = self.data['ids']
-        if restId not in ids:
-            raise Exception('invalid parameters')
-
-        newItem = {}
-        newItem['id'] = self.generateId()
-        newItem['restId'] = restId
-        newItem['name'] = name
-        newItem['price'] = price
-
-        self.data['items'].append(newItem)
-        self.data['ids'].append(newItem['id'])
-
 
     
-    def addOrder(self, custId, restId, itemId, timestamp):
-        ids = self.data['ids']
-        if itemId not in ids or custId not in ids or restId not in ids:
-            raise Exception('invalid parameters')
+    def getRestaurants(self):
+        return self.data['restaurants']
+    
+    def getCustomers(self):
+        return self.data['customers']
+    
+    def getItems(self):
+        return self.data['items']
 
-        newOrder = {}
-        newOrder['id'] = self.generateId()
-        newOrder['custId'] = custId
-        newOrder['restId'] = restId
-        newOrder['itemId'] = itemId
-        newOrder['timestamp'] = timestamp
+    def getOrders(self):
+        return self.data['orders']
 
-        self.data['orders'].append(newOrder)
-        self.data['ids'].append(newOrder['id'])
+    def getItemsByRestId(self, restId):
+        items = self.data['items']
+        itemsToReturn = []
+        for item in items:
+            if item['restId'] == restId:
+                itemsToReturn.append(item)
+        return items
 
 
     # generate new id that isn't in database
@@ -163,6 +184,8 @@ class Database:
         while(newId in self.data['ids']):
             newId = uuid4().int
         return newId
+
+
 
 
 
