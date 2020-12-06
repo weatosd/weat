@@ -1,12 +1,20 @@
 import pytest_check as check
 from Database import Database
-data = Database().data
+mockData = Database().data
 
 assert_true = check.is_true
 
-# tests basic structure of database
-def test_basic_structure():
+# other tests that modify the database should run this function
+def database_structure(data):
+    test_basic_structure(data)
+    test_unique_ids(data)
+    test_item_to_rest(data)
+    test_order_map(data)
 
+# tests basic structure of database
+def test_basic_structure(data = None):
+    if not data:
+        data = mockData
     assert_true('customers' in data)
     assert_true('restaurants' in data)
     assert_true('items' in data)
@@ -17,8 +25,8 @@ def test_basic_structure():
         assert_true('id' in item)
         assert_true('name' in item)
         assert_true('address' in item)
-        assert_true('email' in item)
-        assert_true('preferences' in item)
+        # assert_true('email' in item)
+        # assert_true('preferences' in item)
     
     restaurants = data['restaurants']
     for item in restaurants:
@@ -43,12 +51,16 @@ def test_basic_structure():
         assert_true('timestamp' in item)
 
 # make sure every object has a unique id
-def test_unique_ids():
-    ids = set()
-    for key,val in data.items():
-        for item in data[key]:
-            assert_true(item['id'] not in ids)
-            ids.add(item['id'])
+def test_unique_ids(data = None):
+    if not data:
+        data = mockData
+    seen = set()
+    ids = data['ids']
+    for id in ids:
+        assert_true(id not in seen)
+        seen.add(id)
+    
+
             
 
 # this tests the connectivity of the database. All orders must have a
@@ -58,7 +70,9 @@ def test_unique_ids():
 # can query the orders list to find all orders with 'custId' = 'id'
 
 # all items must map to a restaurant
-def test_item_to_rest():
+def test_item_to_rest(data = None):
+    if not data:
+        data = mockData
     items = data['items']
     restaurants = data['restaurants']
     for item in items:
@@ -70,8 +84,9 @@ def test_item_to_rest():
         assert_true(connected)
 
 # all orders must map to a restaurant, customer, and item
-def test_order_map():
-    data = Database().data
+def test_order_map(data = None):
+    if not data:
+        data = mockData
     orders = data['orders']
     items = data['items']
     customers = data['customers']

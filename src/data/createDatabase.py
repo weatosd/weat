@@ -6,6 +6,7 @@ import time
 import random
 
 fake = faker.Faker()
+ids = []
 
 # create customer list of dicts
 customers = []
@@ -30,7 +31,9 @@ restaurants = []
 for key,val in restaurantDict.items():
     for restaurant in val:
         newRestaurant = {}
-        newRestaurant['id'] = uuid4().int
+        newId = uuid4().int
+        ids.append(newId)
+        newRestaurant['id'] = newId
         newRestaurant['name'] = restaurant
         newRestaurant['address'] = fake.address()
         newRestaurant['cuisine'] = key[:key.find('List')]
@@ -40,7 +43,9 @@ for key,val in restaurantDict.items():
 items = []
 for restaurant in restaurants:
     newItem = {}
-    newItem['id'] =  uuid4().int
+    newId = uuid4().int
+    ids.append(newId)
+    newItem['id'] = newId
     newItem['restId'] = restaurant['id']
     newItem['name'] = restaurant['cuisine'] + restaurant['name'].replace(' ', '')
     newItem['price'] = round(random.random()*20 + 5, 2)
@@ -53,7 +58,9 @@ for cust in customers:
     for i in range(random.randint(0,5)):
         newOrder = {}
         randomItem = random.choice(items)
-        newOrder['id'] = uuid4().int
+        newId = uuid4().int
+        ids.append(newId)
+        newOrder['id'] = newId
         newOrder['custId'] = cust['id']
         newOrder['itemId'] = randomItem['id']
         newOrder['restId'] = randomItem['restId']
@@ -62,7 +69,7 @@ for cust in customers:
 
 
 
-root = {'customers': customers, 'restaurants': restaurants, 'items': items, 'orders': orders}
+root = {'customers': customers, 'restaurants': restaurants, 'items': items, 'orders': orders, 'ids': ids}
 jsonData = json.dumps(root)
 f = open('defaultConfig.json', 'w')
 f.write(jsonData)
