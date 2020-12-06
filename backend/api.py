@@ -12,12 +12,15 @@ db = Database()
 #     return jsonData
 @app.route('/restaurants/<id>')
 def getRestaurant(id):
+    id = int(id)
     if id == None:
         restaurants = db.getRestaurants()
         jsonData = json.dumps(restaurants)
         return jsonData
     else:
-        return id
+        restaurant = db.getRestaurantById(id)
+        # print(restaurant)
+        return json.dumps(restaurant)
 
 if __name__ == '__main__':
    app.run(debug = True)

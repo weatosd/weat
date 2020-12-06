@@ -7,7 +7,7 @@ class Database:
     data = {}
     # Structure of database: root[customer[{}],restaurants[{}],items[{}],orders[{}]
 
-    #                     ROOT
+    #                           ROOT
     #          _________________________________________
     #         /       /           \       \             \
     #        /       /             \       \             \
@@ -159,15 +159,31 @@ class Database:
     
     def getRestaurants(self):
         return self.data['restaurants']
-    
+    def getRestaurantById(self, id):
+        for restaurant in self.data['restaurants']:
+            if restaurant['id'] == id:
+                return restaurant
+
     def getCustomers(self):
         return self.data['customers']
+    def getCustomerById(self, id):
+        for customer in self.data['customers']:
+            if customer['id'] == id:
+                return customer
     
     def getItems(self):
         return self.data['items']
+    def getItemById(self, id):
+        for item in self.data['items']:
+            if item['id'] == id:
+                return item
 
     def getOrders(self):
         return self.data['orders']
+    def getOrderById(self, id):
+        for order in self.data['orders']:
+            if order['id'] == id:
+                return order
 
     def getItemsByRestId(self, restId):
         items = self.data['items']
