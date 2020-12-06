@@ -10,6 +10,7 @@ def database_structure(data):
     test_unique_ids(data)
     test_item_to_rest(data)
     test_order_map(data)
+    test_ids(data)
 
 # tests basic structure of database
 def test_basic_structure(data = None):
@@ -98,17 +99,35 @@ def test_order_map(data = None):
         connected = [False, False, False]
         for item in items:
             if item['id'] == itemId:
-                connected[0] = True
+                connected[0] = itemId
         for cust in customers:
             if cust['id'] == custId:
-                connected[1] = True
+                connected[1] = custId
         for rest in restaurants:
             if rest['id'] == restId:
-                connected[2] = True
+                connected[2] = restId
         assert_true(False not in connected)
 
+def test_ids(data = None):
+    if not data:
+        data = mockData
+    for key, val in data.items():
+        if key != 'ids':
+            idsToCheck = [d['id'] for d in data[key]]
+            for id in idsToCheck:
+                assert_true(id in data['ids'])
+    
+    ids = []
 
+    for cust in data['customers']:
+        ids.append(cust['id'])
+    for rest in data['restaurants']:
+        ids.append(rest['id'])
+    for item in data['items']:
+        ids.append(item['id'])    
+    for order in data['orders']:
+        ids.append(order['id'])
 
-
-# test_database_structure()
-# test_database_unique_ids()
+    # for id in ids:
+    #     # print(id)
+    #     assert_true(id in data['ids'])
