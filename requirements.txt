@@ -1,3 +1,5 @@
-firebase-admin
-pandas
-numpy
+uuid
+json
+faker
+random
+time
