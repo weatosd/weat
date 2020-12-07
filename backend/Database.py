@@ -19,11 +19,20 @@ class Database:
     #              cuisine         itemId     price
     #                              timestamp
 
-    def __init__(self,):
+    def __init__(self,data=None):
         # with open('./defaultConfig.json') as json_file:
         #     self.data = json.load(json_file)
-        db = createDatabase.createDatabase()
-        self.data = db
+        if data == None:
+            db = createDatabase.createDatabase()
+            self.data = db
+        elif data == 'empty':
+            self.data['customers'] = None
+            self.data['restaurants'] = None
+            self.data['items'] = None
+            self.data['orders'] = None
+            self.data['ids'] = None
+        else:
+            self.data = data
 
     # adds a new customer to database
     def addCustomer(self, name, address):
