@@ -1,7 +1,6 @@
 import json
 from uuid import uuid4
-import createDatabase
-
+from .createDatabase import createDatabase
 
 class Database:
 
@@ -23,7 +22,7 @@ class Database:
         # with open('./defaultConfig.json') as json_file:
         #     self.data = json.load(json_file)
         if data == None:
-            db = createDatabase.createDatabase()
+            db = createDatabase()
             self.data = db
         elif data == "empty":
             self.data["customers"] = []

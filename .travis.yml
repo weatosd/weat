@@ -8,6 +8,6 @@ install:
 
 script:
   - black backend-database/
-  - python3 -m pytest -vvv backend-database/
+  - python3 -m pytest -vvv ./
 
 branches:

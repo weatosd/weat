@@ -172,8 +172,8 @@ def createDatabase():
         "ids": ids,
     }
 
-    jsonData = json.dumps(root)
-    f = open("defaultConfig.json", "w")
-    f.write(jsonData)
-    f.close()
+    # jsonData = json.dumps(root)
+    # f = open("defaultConfig.json", "w")
+    # f.write(jsonData)
+    # f.close()
     return root
