@@ -5,14 +5,12 @@
 </div>
 -----------------
 
-# weat: a toolkit to build a food delivery app
+# weat: a meal delivery app toolkit
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![codecov](https://codecov.io/gh/weatosd/weat/branch/objects/graph/badge.svg?token=OYYLYPDTPP)](https://codecov.io/gh/weatosd/weat)
 [![Build Status](https://travis-ci.org/weatosd/weat.svg?branch=api)](https://travis-ci.org/weatosd/weat)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-Visit [Weat's official webpage](https://weatinc.com/) for more information on the product
 
 
 ## Application for Restaraunts that provide financial and technological services 
