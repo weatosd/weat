@@ -66,5 +66,12 @@ def test_add_order():
     
     # id = random.choice(db.data['ids'])
     test_database_structure.database_structure(db.data)
-test_add_item()
+    print(db.data)
+
+# @pytest.fixture
+# def randomize():
+#     import faker  
+#     fake = faker.Faker()
+#     return(fake)
+test_add_order()
 

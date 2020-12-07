@@ -1,5 +1,6 @@
 import json
 from uuid import uuid4
+import createDatabase
 
 
 class Database:
@@ -19,8 +20,10 @@ class Database:
     #                              timestamp
 
     def __init__(self,):
-        with open('./defaultConfig.json') as json_file:
-            self.data = json.load(json_file)
+        # with open('./defaultConfig.json') as json_file:
+        #     self.data = json.load(json_file)
+        db = createDatabase.createDatabase()
+        self.data = db
 
     # adds a new customer to database
     def addCustomer(self, name, address):
