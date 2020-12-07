@@ -19,7 +19,7 @@ class Database:
     #                              timestamp
 
     def __init__(self,):
-        with open('./data/defaultConfig.json') as json_file:
+        with open('./defaultConfig.json') as json_file:
             self.data = json.load(json_file)
 
     # adds a new customer to database
