@@ -1,4 +1,4 @@
-<div align="center">
+<div>
   <img src="./WEAT_logo.png"><br>
 </div>
 
