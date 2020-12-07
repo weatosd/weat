@@ -26,13 +26,14 @@ class Database:
             db = createDatabase.createDatabase()
             self.data = db
         elif data == 'empty':
-            self.data['customers'] = None
-            self.data['restaurants'] = None
-            self.data['items'] = None
-            self.data['orders'] = None
-            self.data['ids'] = None
+            self.data['customers'] = []
+            self.data['restaurants'] = []
+            self.data['items'] = []
+            self.data['orders'] = []
+            self.data['ids'] = []
         else:
             self.data = data
+            
 
     # adds a new customer to database
     def addCustomer(self, name, address):
