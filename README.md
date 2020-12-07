@@ -36,5 +36,8 @@ Navigate to ```./backend-database```, where you will find,  <a href="">createDat
     - The database can be instantiated in three ways: ```db = Database(data=None)``` where the database will contain random, correctly formatted data using createDatabase.py, ```db = Database(data='empty')``` creates a skeleton database with empty data, and ```db = Database(data)``` uses data you pass in.
   - **createDatabase.py** created a random database structure with customers, restaurants, items, and sample orders primarily using <a href="https://faker.readthedocs.io/en/master/">faker</a>.
   - **test_database_structure.py** and **test_database_actions.py** are testing files used to test the structure and functions of the Database object.
-  
+
+
+**Database.py**'s functionalities:
+  - asdfas
     
