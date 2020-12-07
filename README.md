@@ -30,12 +30,12 @@ First clone this repository
 ```sh
 git clone https://github.com/weatosd/weat.git
 ```
-Navigate to ```./backend-database```, where you will find,  <a href="https://github.com/weatosd/weat/blob/main/backend-database/createDatabase.py">createDatabase.py</a>,  <a href="https://github.com/weatosd/weat/blob/main/backend-database/Database.py">Database.py</a>, and a couple of testing files.
+Navigate to ```./backend-database```, where you will find,  <a href="https://github.com/weatosd/weat/blob/main/backend-database/createDatabase.py">createDatabase.py</a> and  <a href="https://github.com/weatosd/weat/blob/main/backend-database/Database.py">Database.py</a>.
 
   - **Database.py** is a class that created a database out of dictionaries nested in lists, mimicing Firestore's document-collection NoSQL model. The structure of the database is commented in the class.
     - The database can be instantiated in three ways: ```db = Database(data=None)``` where the database will contain random, correctly formatted data using createDatabase.py, ```db = Database(data='empty')``` creates a skeleton database with empty data, and ```db = Database(data)``` uses data you pass in.
   - **createDatabase.py** created a random database structure with customers, restaurants, items, and sample orders primarily using <a href="https://faker.readthedocs.io/en/master/">faker</a>.
-  - **<a href="https://github.com/weatosd/weat/blob/main/backend-database/test_database_structure.py">test_database_structure.py</a>** and **<a href="https://github.com/weatosd/weat/blob/main/backend-database/test_database_actions.py">test_database_actions.py</a>** are testing files used to test the structure and functions of the Database object.
+
 
 ### Database.py
 **Database** structure:
@@ -48,4 +48,5 @@ Sample **Database** functions and usage:
   - ```removeById(id)``` takes in a valid id (one that's present in ids), and removes the component corresponding to that id in the database, and all of its dependencies. For example, ```removeById(sampleCustomerId)``` will remove the Customer with ```id=sampleCustomerId```, and all of its orders
   - ```getCustomer(id)``` returns the dictionary defining the Customer with id. The same can be done with Restaurants, Items, and Orders.
   
-    
+### Testing
+  - pytest runs   **<a href="https://github.com/weatosd/weat/blob/main/test_database.py">test_database.py</a>** that tests the Database's functions and structure.
