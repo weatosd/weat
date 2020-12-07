@@ -5,12 +5,18 @@ import json
 import random
 import pytest
 import time
+import faker
 assert_true = check.is_true
 db = Database()
+fake = faker.Faker()
+fakeNames = []
+fakeAddresses = []
+for i in range(1000):
+    fakeNames.append(fake.name())
+    fakeAddresses.append(fake.address())
 
-randomNameAddressStore = {}
-with open('./data/randomNameAddressStore.json') as json_file: 
-    randomNameAddress = json.load(json_file)
+randomNameAddress = {'names':fakeNames, 'addresses': fakeAddresses}
+
 
 
 def test_add_customer():
@@ -64,14 +70,6 @@ def test_add_order():
 
     db.addOrder(customerId, restaurantId, itemId, timestamp)
     
-    # id = random.choice(db.data['ids'])
     test_database_structure.database_structure(db.data)
-    print(db.data)
 
-# @pytest.fixture
-# def randomize():
-#     import faker  
-#     fake = faker.Faker()
-#     return(fake)
-test_add_order()
 
