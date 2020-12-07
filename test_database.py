@@ -1,4 +1,4 @@
-from database.Database import Database
+from backend import Database
 import pytest_check as check
 import json
 import random
@@ -6,7 +6,7 @@ import pytest
 import time
 import faker
 
-db = Database()
+db = Database.Database()
 mockData = db.data
 
 assert_true = check.is_true
