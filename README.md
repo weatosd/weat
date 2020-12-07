@@ -7,7 +7,7 @@
 [![Build Status](https://travis-ci.org/weatosd/weat.svg?branch=main)](https://travis-ci.org/weatosd/weat)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Visit [Weat's officiale webpage](https://www.weat4you.com/) for more information
+Visit [Weat's official webpage](https://weatinc.com/) for more information on the product
 
 
 ## Application for Restaraunts that provide financial and technological services 
