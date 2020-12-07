@@ -1,6 +1,11 @@
 <div>
+  <a href="https://weatinc.com/">
   <img src="./WEAT_logo.png"><br>
+  </a>
 </div>
+-----------------
+
+# weat: a toolkit to build a food delivery app
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![codecov](https://codecov.io/gh/weatosd/weat/branch/objects/graph/badge.svg?token=OYYLYPDTPP)](https://codecov.io/gh/weatosd/weat)
