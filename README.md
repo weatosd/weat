@@ -1,6 +1,6 @@
 <div>
   <a href="https://weatinc.com/">
-  <img src="./WEAT_logo.png"><br>
+  <img src="./weat_logo.png"><br>
   </a>
 </div>
 
