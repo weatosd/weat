@@ -37,7 +37,15 @@ Navigate to ```./backend-database```, where you will find,  <a href="">createDat
   - **createDatabase.py** created a random database structure with customers, restaurants, items, and sample orders primarily using <a href="https://faker.readthedocs.io/en/master/">faker</a>.
   - **test_database_structure.py** and **test_database_actions.py** are testing files used to test the structure and functions of the Database object.
 
+### Database.py
+**Database** structure:
+  - The data is stored in a map of lists of maps. There are 4 major components: Customers (users who order food), Restaurants, Items (meals provided by restaurants), and Orders. All components have a unique **id**, which is used to reference other components. 
+  - Items depend on Restaurants, and Orders depend on Customers, and Items (and by extension depend on Restaurants). These dependencies are defined dictionaries containing the id's of dependencies.
+  - A list of all the ids are present in the ids list
 
-**Database.py**'s functionalities:
-  - asdfas
+Sample **Database** functions and usage:
+  - ```addCustomer(name, address)``` created a new Customer with the parameters provided, and adds them to the database. The same can be done with Restaurants, Items, and Orders
+  - ```removeById(id)``` takes in a valid id (one that's present in ids), and removes the component corresponding to that id in the database, and all of its dependencies. For example, ```removeById(sampleCustomerId)``` will remove the Customer with ```id=sampleCustomerId```, and all of its orders
+  - ```getCustomer(id)``` returns the dictionary defining the Customer with id. The same can be done with Restaurants, Items, and Orders.
+  
     
