@@ -118,16 +118,21 @@ def test_ids(data = None):
                 assert_true(id in data['ids'])
     
     ids = []
+    customers = data['customers']
+    restaurants = data['restaurants']
+    items = data['items']
+    orders = data['orders']
 
-    for cust in data['customers']:
+    for cust in customers:
         ids.append(cust['id'])
-    for rest in data['restaurants']:
+    for rest in restaurants:
         ids.append(rest['id'])
-    for item in data['items']:
+    for item in items:
         ids.append(item['id'])    
-    for order in data['orders']:
+    for order in orders:
         ids.append(order['id'])
 
-    # for id in ids:
-    #     # print(id)
-    #     assert_true(id in data['ids'])
+    for id in ids:
+        assert_true(id in data['ids'])
+
+    assert_true(len(customers) + len(restaurants) + len(items) + len(orders) == len(ids))
