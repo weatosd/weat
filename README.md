@@ -33,4 +33,4 @@ git clone https://github.com/weatosd/weat.git
 Navigate to ```./backend-database``` where you will find <a href="">Database.py</a>, which contains a python class for creating a database out of dictionaries nested in lists, mimicing Firestore's document-collection NoSQL model. The structure of the database is commented in the class.
 
   - The database can be instantiated in three ways: 
-      - ```python db = Database(data=None) ```
+      - ```py db = Database(data=None) ```
