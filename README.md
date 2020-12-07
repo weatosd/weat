@@ -26,7 +26,11 @@ Here are some of the features that we have built and are currently working on:
 
 ## how to use this project
 
-First clone this repository:
+First clone this repository
 ```sh
 git clone https://github.com/weatosd/weat.git
 ```
+Navigate to ```./backend-database``` where you will find <a href="">Database.py</a>, which contains a python class for creating a database out of dictionaries nested in lists, mimicing Firestore's document-collection NoSQL model. The structure of the database is commented in the class.
+
+  - The database can be instantiated in three ways: 
+      - ```python db = Database(data=None) ```
