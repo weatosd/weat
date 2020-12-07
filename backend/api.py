@@ -1,6 +1,7 @@
 from flask import Flask
 from Database import Database
 import json
+
 app = Flask(__name__)
 
 db = Database()
@@ -10,7 +11,7 @@ db = Database()
 #     restaurants = db.getRestaurants()
 #     jsonData = json.dumps(restaurants)
 #     return jsonData
-@app.route('/restaurants/<id>')
+@app.route("/restaurants/<id>")
 def getRestaurant(id):
     id = int(id)
     if id == None:
@@ -22,5 +23,6 @@ def getRestaurant(id):
         # print(restaurant)
         return json.dumps(restaurant)
 
-if __name__ == '__main__':
-   app.run(debug = True)
+
+if __name__ == "__main__":
+    app.run(debug=True)
