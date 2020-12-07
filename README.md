@@ -20,7 +20,9 @@ This project tracks the progress of **weat Inc**'s application. The project is o
 
 ## main features
 Here are some of the features that we have built and are currently working on:
-  - An intuitive **<a href="https://github.com/weatosd/weat/tree/main/backend">backend</a>** that mimics Firebase's **<a href="https://firebase.google.com/docs/firestore">Firestore</a>**.
+  - An intuitive **<a href="https://github.com/weatosd/weat/tree/main/backend">database</a>** that mimics Firebase's **<a href="https://firebase.google.com/docs/firestore">Firestore</a>**, build using Python3.
+  - An <a href="https://github.com/weatosd/weat/tree/main/api">api</a> for interacting and serving data from the database.
+  - Coming up: a frontend build from Python that mimics user actions
 
 Firstly, we will build a feature that allows their customers to easily subscribe to weekly meal packages. This is in order to help restaurants revitalize their business by providing them with an alternative diverse revenue stream.
 
