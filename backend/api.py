@@ -45,21 +45,39 @@ def login():
 @app.route('/getById', methods=['GET'])   
 def getById():
     key = int(request.form['key'])
-    id = int(request.form['id'])
-    
     if key not in loginKeys:
         return jsonify("you must log in first!")
 
-    
+    id = int(request.form['id'])
 
     return jsonify(db.getById(id))
 
-
-
-def isValidKey(key):
+@app.route('/getRestaurants', methods=['GET'])   
+def getRestaurants():
+    key = int(request.form['key'])
     if key not in loginKeys:
-        return False
-    return True
+        return jsonify("you must log in first!")
+
+    return jsonify(db.getRestaurants())
+
+@app.route('/getItems', methods=['GET'])   
+def getItems():
+    key = int(request.form['key'])
+    if key not in loginKeys:
+        return jsonify("you must log in first!")
+
+    return jsonify(db.getItems())
+
+@app.route('/getCustomerOrders', methods=['GET'])   
+def getCustomerOrders():
+    key = int(request.form['key'])
+    if key not in loginKeys:
+        return jsonify("you must log in first!")
+
+    id = int(request.form['id'])
+
+    return jsonify(db.getCustomerOrders(id))
+
 
 def generateKey():
     newKey = uuid4()
