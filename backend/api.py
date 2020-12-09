@@ -18,19 +18,33 @@ def login():
     for login in db.data['logins']:
         if username == login['username'] and password == login['password']:
             # generate a login key for the user that it can use to use functions
-            key = generateKey()
+            key = str(generateKey())
             userId = login['id']
             # adding key,id to map of keys
             loginKeys[key] = userId
             return jsonify({'key': key, 'userData': db.getById(userId)})
-    return jsonify(['incorrect user or pass, nice try punk'])
+    return jsonify("wrong username or password")
 
 
 # right now the Flask app urls mimic Database.py object methods for simplicity
 # users will only be able to use these methods if they have a valid key
 
 
-@app.route('/getById', methods=['POST'])   
+@app.route('/getById', methods=['GET'])   
+def getById():
+    key = request.form['key']
+    if key not in loginKeys:
+        return jsonify("you must log in first!")
+
+    return jsonify(db.getById(loginKeys[key]))
+
+
+
+def isValidKey(key):
+    if key not in loginKeys:
+        return False
+    return True
+
 def generateKey():
     newKey = uuid4()
     while newKey in loginKeys:
