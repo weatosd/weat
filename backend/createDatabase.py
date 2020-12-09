@@ -164,14 +164,9 @@ def createDatabase():
             )  # in the next 5 days
             orders.append(newOrder)
     
-    logins =[]
+    logins = createLogins(customers)
+    logins.extend(createLogins(restaurants))
 
-    for customer in customers:
-        newLogin = {}
-        newLogin['id'] = customer['id']
-        newLogin['username'] = customer['name'].replace(' ', '') 
-        newLogin['password'] = customer['name'].split(" ")[0] + str(random.randint(100, 999))
-        logins.append(newLogin)
 
 
 
@@ -189,3 +184,14 @@ def createDatabase():
     # f.write(jsonData)
     # f.close()
     return root
+
+def createLogins(l):
+    logins = []
+    for item in l:
+        newLogin = {}
+        newLogin['id'] = item['id']
+        newLogin['username'] = item['name'].replace(' ', '') 
+        newLogin['password'] = item['name'].split(" ")[0] + str(random.randint(100, 999))
+        logins.append(newLogin)
+    return logins
+
