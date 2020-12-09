@@ -14,4 +14,4 @@ First of all, thank you for your interest in being a contributor! We have a very
 
 We primarily use pytest for all tests, and require our pull requests to the <a href="https://github.com/weatosd/weat">**main branch**</a> to pass our Travis tests
 
-# Thank you
+# Thank you!
