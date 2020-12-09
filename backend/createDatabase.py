@@ -163,6 +163,17 @@ def createDatabase():
                 86400 * 5
             )  # in the next 5 days
             orders.append(newOrder)
+    
+    logins =[]
+
+    for customer in customers:
+        newLogin = {}
+        newLogin['id'] = customer['id']
+        newLogin['username'] = customer['name'].replace(' ', '') 
+        newLogin['password'] = customer['name'].split(" ")[0] + str(random.randint(100, 999))
+        logins.append(newLogin)
+
+
 
     root = {
         "customers": customers,
@@ -170,6 +181,7 @@ def createDatabase():
         "items": items,
         "orders": orders,
         "ids": ids,
+        "logins": logins,
     }
 
     # jsonData = json.dumps(root)
