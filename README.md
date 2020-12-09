@@ -1,32 +1,55 @@
-# WEAT
+<div>
+  <a href="https://weatinc.com/">
+  <img src="./weat_logo.png"><br>
+  </a>
+</div>
+
+-----------------
+
+# a meal delivery app toolkit
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![codecov](https://codecov.io/gh/weatosd/weat/branch/objects/graph/badge.svg?token=OYYLYPDTPP)](https://codecov.io/gh/weatosd/weat)
+[![Build Status](https://travis-ci.org/weatosd/weat.svg?branch=api)](https://travis-ci.org/weatosd/weat)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Visit [Weat's officiale webpage](https://www.weat4you.com/) for more information
+## about the project
 
-
-## Application for Restaraunts that provide financial and technological services 
-
-I want to create a full stack application that allows restaurants to have access to financial and technological advantages, similar to shopify, but with greater capabilities. Currently, Tommy Gomez and I (Lucas Jerez) am interning for a startup called Weat. We will be working with two highly intelligent Columbia alumni who are currently employed at BCG. We will be building an application from scratch with the features that are listed bellow. 
-
-
-
-## Features
-
-Firstly, we will build a feature that allows their customers to easily subscribe to weekly meal packages. This is in order to help restaurants revitalize their business by providing them with an alternative diverse revenue stream.
-
-After this, we are looking to add more features such as financial reports, predictive customer activity, and even leveraging our platform's client's business data to provide insights that otherwise wouldn't be available. We are very much in the planning phase; we just have a rough idea of what we want to accomplish with this app.
+This project tracks the progress of **weat Inc**'s application. The project is open source, and is meant to make creating a food delivery application easy. Feel free to contribute to this project, and to create any issues that you may find!
 
 
-## User research & closing remarks
+## main features
+Here are some of the features that we have built and are currently working on:
+  - An intuitive **<a href="https://github.com/weatosd/weat/tree/main/backend-database">database</a>** that mimics Firebase's **<a href="https://firebase.google.com/docs/firestore">Firestore</a>**, build using Python3.
+  - An **<a href="https://github.com/weatosd/weat/tree/main/api">backend-api</a>** for interacting and serving data from the database.
+  - Coming up: a frontend build from Python that mimics user actions
 
-One of my goals is to conduct customer research to pinpoint our potential customer's struggles and needs, and what features could benefit them from our app. Like Professor Paine quoted, we need to treat our users as co-developers, and so we will be spending time in the early stages conducting virtual interviews to see what we actually need to build.
+## how to use this project
 
-We will need to use Git version control, React for the front end, and Python the backend. 
+First clone this repository
+```sh
+git clone https://github.com/weatosd/weat.git
+```
+Navigate to ```./backend-database```, where you will find,  <a href="https://github.com/weatosd/weat/blob/main/backend-database/createDatabase.py">createDatabase.py</a> and  <a href="https://github.com/weatosd/weat/blob/main/backend-database/Database.py">Database.py</a>.
 
-The COVID19 pandemic has brought restaurant businesses in a precarious position, with many facing or already experiencing closure. I truly believe that this application can help remedy the situation and have a positive social impact.
+  - **Database.py** is a class that created a database out of dictionaries nested in lists, mimicing Firestore's document-collection NoSQL model. The structure of the database is commented in the class.
+    - The database can be instantiated in three ways: ```db = Database(data=None)``` where the database will contain random, correctly formatted data using createDatabase.py, ```db = Database(data='empty')``` creates a skeleton database with empty data, and ```db = Database(data)``` uses data you pass in.
+  - **createDatabase.py** created a random database structure with customers, restaurants, items, and sample orders primarily using <a href="https://faker.readthedocs.io/en/master/">faker</a>.
 
 
+### Database.py
+**Database** structure:
+  - The data is stored in a map of lists of maps. There are 4 major components: Customers (users who order food), Restaurants, Items (meals provided by restaurants), and Orders. All components have a unique **id**, which is used to reference other components. 
+  - Items depend on Restaurants, and Orders depend on Customers, and Items (and by extension depend on Restaurants). These dependencies are defined dictionaries containing the id's of dependencies.
+  - A list of all the ids are present in the ids list
 
+Sample **Database** functions and usage:
+  - ```addCustomer(name, address)``` created a new Customer with the parameters provided, and adds them to the database. The same can be done with Restaurants, Items, and Orders
+  - ```removeById(id)``` takes in a valid id (one that's present in ids), and removes the component corresponding to that id in the database, and all of its dependencies. For example, ```removeById(sampleCustomerId)``` will remove the Customer with ```id=sampleCustomerId```, and all of its orders
+  - ```getCustomer(id)``` returns the dictionary defining the Customer with id. The same can be done with Restaurants, Items, and Orders.
+  
+### Testing
+  - pytest runs **<a href="https://github.com/weatosd/weat/blob/main/test_database.py">test_database.py</a>** that tests the Database's functions and structure.
 
-
+## license
+**<a href="https://github.com/weatosd/weat/blob/main/LICENSE">Apache License 2.0</a>**
