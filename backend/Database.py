@@ -167,6 +167,14 @@ class Database:
 
         self.data["ids"].remove(id)
 
+
+    def getById(self, id):
+        potentialComponent = [self.getCustomerById(id), self.getRestaurantById(id), self.getItemById(id), self.getOrderById(id)]
+        for comp in potentialComponent:
+            if comp:
+                return comp
+        return None
+
     def getRestaurants(self):
         return self.data["restaurants"]
 
