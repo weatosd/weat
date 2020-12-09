@@ -9,6 +9,7 @@ class Customer:
     id = None
     name = None
     address = None
+    orders = []
 
     def __init__(self, username, password):
 
@@ -26,9 +27,27 @@ class Customer:
 
         if type(response) == str:
             raise ValueError(response)
-        
+
         self.name = response['name']
         self.address = response['address']
+
+        self.getOrders()
+
+    def getOrders(self):
+
+        getCustomerOrdersObject = {'key': self.key, 'id': self.id}
+
+        response = requests.get('http://127.0.0.1:5000/getCustomerOrders', data = getCustomerOrdersObject).json()
+
+        if type(response) == str:
+            raise ValueError(response)
+            
+        self.orders = response
+
+
+
+        
+        
 
         
 
