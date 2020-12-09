@@ -7,7 +7,10 @@ app = Flask(__name__)
 db = Database()
 
 # keys given to logged-in users, maps a key to a userId
-loginKeys = {}
+loginKeys = set()
+
+loggedInUsers = set()
+
 
 
 # first post request user should call
@@ -15,15 +18,24 @@ loginKeys = {}
 def login():
     username = request.form['username']
     password = request.form['password']
-    for login in db.data['logins']:
-        if username == login['username'] and password == login['password']:
-            # generate a login key for the user that it can use to use functions
-            key = str(generateKey())
-            userId = login['id']
-            # adding key,id to map of keys
-            loginKeys[key] = userId
-            return jsonify({'key': key, 'userData': db.getById(userId)})
-    return jsonify("wrong username or password")
+    # print(db.data)
+
+    if username not in db.data['logins']:
+        return jsonify("incorrect username")
+    
+    if password != db.data['logins'][username]['password']:
+        return jsonify("incorrect password")
+
+    if username in loggedInUsers:
+        return jsonify("already logged in")
+
+    loggedInUsers.add(username)
+    newKey = generateKey()
+    loginKeys.add(newKey)
+    userId = db.data['logins'][username]['id']
+    
+    return({'key':newKey, 'id':userId})
+
 
 
 # right now the Flask app urls mimic Database.py object methods for simplicity
@@ -32,11 +44,15 @@ def login():
 
 @app.route('/getById', methods=['GET'])   
 def getById():
-    key = request.form['key']
+    key = int(request.form['key'])
+    id = int(request.form['id'])
+    
     if key not in loginKeys:
         return jsonify("you must log in first!")
 
-    return jsonify(db.getById(loginKeys[key]))
+    
+
+    return jsonify(db.getById(id))
 
 
 
@@ -49,7 +65,7 @@ def generateKey():
     newKey = uuid4()
     while newKey in loginKeys:
         newKey = uuid4()
-    return newKey
+    return int(newKey)
 
 
 if __name__ == '__main__':

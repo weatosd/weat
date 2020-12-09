@@ -164,8 +164,8 @@ def createDatabase():
             )  # in the next 5 days
             orders.append(newOrder)
     
-    logins = createLogins(customers)
-    logins.extend(createLogins(restaurants))
+    logins = createLogins(customers, {})
+    logins = createLogins(restaurants, logins)
 
 
 
@@ -185,13 +185,14 @@ def createDatabase():
     f.close()
     return root
 
-def createLogins(l):
-    logins = []
-    for item in l:
-        newLogin = {}
-        newLogin['id'] = item['id']
-        newLogin['username'] = item['name'].replace(' ', '') 
-        newLogin['password'] = item['name'].split(" ")[0] + str(random.randint(100, 999))
-        logins.append(newLogin)
+def createLogins(listOfDicts, logins):
+    for item in listOfDicts:
+        
+        mockUsername = item['name'].replace(' ', '') 
+        mockPassword = item['name'].split(" ")[0] + str(random.randint(100, 999))
+        itemId = item['id']
+
+        logins[mockUsername] = {'password':mockPassword,'id': itemId}
+
     return logins
 
