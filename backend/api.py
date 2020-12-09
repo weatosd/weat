@@ -3,12 +3,10 @@ from .Database import Database
 from uuid import uuid4
 
 app = Flask(__name__)
-
 db = Database()
 
 # keys given to logged-in users, maps a key to a userId
 loginKeys = set()
-
 loggedInUsers = set()
 
 

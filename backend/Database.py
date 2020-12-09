@@ -207,6 +207,13 @@ class Database:
             if order["id"] == id:
                 return order
 
+    def getCustomerOrders(self, custId):
+        orders = []
+        for order in self.data["orders"]:
+            if order["custId"] == custId:
+                orders.append(order)
+        return orders
+
     def getItemsByRestId(self, restId):
         items = self.data["items"]
         itemsToReturn = []
