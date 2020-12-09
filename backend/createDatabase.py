@@ -180,9 +180,12 @@ def createDatabase():
     }
 
     jsonData = json.dumps(root)
-    f = open("defaultConfig.json", "w")
-    f.write(jsonData)
-    f.close()
+    f1 = open("defaultConfig.json", "w")
+    # f2 = open("defaultConfig.json", "w")
+    f1.write(jsonData)
+    f1.close()
+    # f2.write(jsonData)
+    # f2.close()
     return root
 
 def createLogins(listOfDicts, logins):
