@@ -23,4 +23,3 @@ jobs:
           git config --global user.email 'ltj2105@columbia.edu'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "Automated changes"
-          git push
