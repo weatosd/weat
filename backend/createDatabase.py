@@ -163,6 +163,12 @@ def createDatabase():
                 86400 * 5
             )  # in the next 5 days
             orders.append(newOrder)
+    
+    logins = createLogins(customers, {})
+    logins = createLogins(restaurants, logins)
+
+
+
 
     root = {
         "customers": customers,
@@ -170,10 +176,23 @@ def createDatabase():
         "items": items,
         "orders": orders,
         "ids": ids,
+        "logins": logins,
     }
 
-    # jsonData = json.dumps(root)
-    # f = open("defaultConfig.json", "w")
-    # f.write(jsonData)
-    # f.close()
+    jsonData = json.dumps(root)
+    f = open("defaultConfig.json", "w")
+    f.write(jsonData)
+    f.close()
     return root
+
+def createLogins(listOfDicts, logins):
+    for item in listOfDicts:
+        
+        mockUsername = item['name'].replace(' ', '') 
+        mockPassword = item['name'].split(" ")[0] + str(random.randint(100, 999))
+        itemId = item['id']
+
+        logins[mockUsername] = {'password':mockPassword,'id': itemId}
+
+    return logins
+

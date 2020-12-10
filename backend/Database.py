@@ -167,6 +167,14 @@ class Database:
 
         self.data["ids"].remove(id)
 
+
+    def getById(self, id):
+        potentialComponent = [self.getCustomerById(id), self.getRestaurantById(id), self.getItemById(id), self.getOrderById(id)]
+        for comp in potentialComponent:
+            if comp:
+                return comp
+        return None
+
     def getRestaurants(self):
         return self.data["restaurants"]
 
@@ -198,6 +206,13 @@ class Database:
         for order in self.data["orders"]:
             if order["id"] == id:
                 return order
+
+    def getCustomerOrders(self, custId):
+        orders = []
+        for order in self.data["orders"]:
+            if order["custId"] == custId:
+                orders.append(order)
+        return orders
 
     def getItemsByRestId(self, restId):
         items = self.data["items"]

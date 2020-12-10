@@ -121,7 +121,7 @@ def test_ids(data=None):
     if not data:
         data = mockData
     for key, val in data.items():
-        if key != "ids":
+        if key != "ids" and key != "logins":
             idsToCheck = [d["id"] for d in data[key]]
             for id in idsToCheck:
                 assert_true(id in data["ids"])
