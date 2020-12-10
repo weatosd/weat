@@ -1,1 +1,2 @@
-print("random")
+print("raandom")
+
