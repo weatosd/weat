@@ -25,17 +25,13 @@ Here are some of the features that we have built and are currently working on:
   - An **<a href="https://github.com/weatosd/weat/tree/main/api">backend-api</a>** for interacting and serving data from the database.
   - Coming up: a frontend build from Python that mimics user actions
 
-## how to use this project
+## Quickstart Guide
 
 First clone this repository
 ```sh
 git clone https://github.com/weatosd/weat.git
 ```
-Navigate to ```./backend-database```, where you will find,  <a href="https://github.com/weatosd/weat/blob/main/backend-database/createDatabase.py">createDatabase.py</a> and  <a href="https://github.com/weatosd/weat/blob/main/backend-database/Database.py">Database.py</a>.
-
-  - **Database.py** is a class that created a database out of dictionaries nested in lists, mimicing Firestore's document-collection NoSQL model. The structure of the database is commented in the class.
-    - The database can be instantiated in three ways: ```db = Database(data=None)``` where the database will contain random, correctly formatted data using createDatabase.py, ```db = Database(data='empty')``` creates a skeleton database with empty data, and ```db = Database(data)``` uses data you pass in.
-  - **createDatabase.py** created a random database structure with customers, restaurants, items, and sample orders primarily using <a href="https://faker.readthedocs.io/en/master/">faker</a>.
+Navigate to ```./backend```, specify the data you want the database to have in api.py's ```db = Database(data=initialData)```, where initialData follows the proper format (<a href="https://weat.readthedocs.io/en/latest/?badge=latest#instantiation">**readthedocs**</a>), set the FLASK_APP environment variable to api (<a href="https://flask.palletsprojects.com/en/1.1.x/cli/">**Flask's docs**</a>), and type ```flask run```.
 
 ### Documentation
 
