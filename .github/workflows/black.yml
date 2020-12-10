@@ -9,3 +9,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: psf/black@stable
+      - name: Push changes
+              git config --global user.name 'LucasTJerez'
+              git config --global user.email 'ltj2105@columbia.edu'
+              git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/weatosd/weat
+              git checkout $GITHUB_HEAD_REF --no-guess
+              git commit -am "Automated changes"
+              git push origin HEAD:$GITHUB_HEAD_REF
