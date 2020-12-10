@@ -1,25 +1,26 @@
-# name: auto-format
-# on: pull_request
-# jobs:
-#   format:
-#     # Check if the PR is not from a fork
-#     if: github.event.pull_request.head.repo.full_name == github.repository
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v1
-#       - name: black
-#         uses: lgeiger/black-action@v1.0.1
-#         with:
-#           args: .
-#       - name: Check for modified files
-#         id: git-check
-#         run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
-#       - name: Push changes
-#         if: steps.git-check.outputs.modified == 'true'
-#         run: |
-#           git config --global user.name 'LucasTJerez'
-#           git config --global user.email 'ltj2105@columbia.edu'
-#           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/weatosd/weat
-#           git checkout $GITHUB_HEAD_REF --no-guess
-#           git commit -am "Automated changes"
-#           git push origin HEAD:$GITHUB_HEAD_REF
+name: auto-format
+on: pull_request
+jobs:
+  format:
+    # Check if the PR is not from a fork
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: ${{ github.head_ref }}
+      - name: autopep8
+        uses: peter-evans/autopep8@v1
+        with:
+          args: --exit-code --recursive --in-place --aggressive --aggressive .
+      - name: Check for modified files
+        id: git-check
+        run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+      - name: Push changes
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+          git config --global user.name 'LucasTJerez'
+          git config --global user.email 'ltj2105@columbia.edu'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Automated changes"
+          git push origin ${{ github.head_ref }}
