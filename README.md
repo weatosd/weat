@@ -32,7 +32,7 @@ First clone this repository
 ```sh
 git clone https://github.com/weatosd/weat.git
 ```
-Navigate to ```./backend```, specify the data you want the database to have in api.py's ```db = Database(data=initialData)```, where initialData follows the proper (<a href="https://weat.readthedocs.io/en/latest/?badge=latest#instantiation">**format**</a>), set the FLASK_APP environment variable to api (<a href="https://flask.palletsprojects.com/en/1.1.x/cli/">**Flask's docs**</a>), and type ```flask run```.
+Navigate to ```./backend```, specify the data you want the database to have in api.py's ```db = Database(data=initialData)```, where initialData follows the proper <a href="https://weat.readthedocs.io/en/latest/?badge=latest#instantiation">format</a>, set the FLASK_APP environment variable to api (<a href="https://flask.palletsprojects.com/en/1.1.x/cli/">**Flask's docs**</a>), and type ```flask run```.
 
 ### Documentation
 
