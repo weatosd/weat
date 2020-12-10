@@ -14,6 +14,7 @@ loggedInUsers = set()
 # first post request user should call
 @app.route('/login', methods=['POST'])
 def login():
+    print(request.form)
     username = request.form['username']
     password = request.form['password']
     # print(db.data)
@@ -81,7 +82,7 @@ def generateKey():
     newKey = uuid4()
     while newKey in loginKeys:
         newKey = uuid4()
-    return int(newKey)
+    return newKey.int
 
 
 if __name__ == '__main__':
