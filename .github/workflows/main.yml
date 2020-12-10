@@ -22,4 +22,4 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/weatosd
           git checkout $GITHUB_HEAD_REF --no-guess
           git commit -am "Automated changes"
-          git push
+          git push ORIGIN HEAD:$GITHUB_HEAD_REF
