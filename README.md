@@ -36,6 +36,10 @@ Navigate to ```./backend-database```, where you will find,  <a href="https://git
     - The database can be instantiated in three ways: ```db = Database(data=None)``` where the database will contain random, correctly formatted data using createDatabase.py, ```db = Database(data='empty')``` creates a skeleton database with empty data, and ```db = Database(data)``` uses data you pass in.
   - **createDatabase.py** created a random database structure with customers, restaurants, items, and sample orders primarily using <a href="https://faker.readthedocs.io/en/master/">faker</a>.
 
+### Documentation
+
+Head over to <a href="https://weat.readthedocs.io/en/latest/">**weat's documentation**</a>!
+
 
 ### Database.py
 **Database** structure:
