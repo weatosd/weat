@@ -39,7 +39,7 @@ Navigate to ```./backend-database```, where you will find,  <a href="https://git
 
 ### Documentation
 
-Head over to <a href="https://weat.readthedocs.io/en/latest/">**weat's documentation**</a>!
+Head over to <a href="https://weat.readthedocs.io/en/latest/?badge=latest">**weat's documentation**</a>!
 
 
 ### Database.py
