@@ -2,6 +2,7 @@ import json
 from uuid import uuid4
 from .createDatabase import createDatabase
 
+
 class Database:
 
     data = {}
@@ -167,9 +168,13 @@ class Database:
 
         self.data["ids"].remove(id)
 
-
     def getById(self, id):
-        potentialComponent = [self.getCustomerById(id), self.getRestaurantById(id), self.getItemById(id), self.getOrderById(id)]
+        potentialComponent = [
+            self.getCustomerById(id),
+            self.getRestaurantById(id),
+            self.getItemById(id),
+            self.getOrderById(id),
+        ]
         for comp in potentialComponent:
             if comp:
                 return comp
