@@ -13,6 +13,7 @@
 [![Build Status](https://travis-ci.org/weatosd/weat.svg?branch=api)](https://travis-ci.org/weatosd/weat)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Documentation Status](https://readthedocs.org/projects/weat/badge/?version=latest)](https://weat.readthedocs.io/en/latest/?badge=latest)
+![Lint](https://github.com/weatosd/weat/workflows/Lint/badge.svg)
 
 ## about the project
 
@@ -31,7 +32,7 @@ First clone this repository
 ```sh
 git clone https://github.com/weatosd/weat.git
 ```
-Navigate to ```./backend```, specify the data you want the database to have in api.py's ```db = Database(data=initialData)```, where initialData follows the proper format (<a href="https://weat.readthedocs.io/en/latest/?badge=latest#instantiation">**readthedocs**</a>), set the FLASK_APP environment variable to api (<a href="https://flask.palletsprojects.com/en/1.1.x/cli/">**Flask's docs**</a>), and type ```flask run```.
+Navigate to ```./backend```, specify the data you want the database to have in api.py's ```db = Database(data=initialData)```, where initialData follows the proper <a href="https://weat.readthedocs.io/en/latest/?badge=latest#instantiation">format</a>, set the FLASK_APP environment variable to api (<a href="https://flask.palletsprojects.com/en/1.1.x/cli/">**Flask's docs**</a>), and type ```flask run```.
 
 ### Documentation
 
