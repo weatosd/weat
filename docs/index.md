@@ -89,6 +89,7 @@ Weat's backend uses [Flask](https://flask.palletsprojects.com/en/1.1.x/) to hand
 Use the path `/login?username=[USERNAME]&password=[PASSWORD]` to simulate logging in to Weat. Two parameters are required:
 - username: a valid username in the database
 - password: a valid password in the database that corresponds to the provided username  
+  
 If a valid username and password pair is provided, a unique key and user ID are returned. The provided key is necessary for access to all of the other actions.  
 
 ### Get by ID
