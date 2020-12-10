@@ -19,7 +19,7 @@ jobs:
         run: |
           git config --global user.name 'LucasTJerez'
           git config --global user.email 'ltj2105@columbia.edu'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/weatosd
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/weatosd/weat
           git checkout $GITHUB_HEAD_REF --no-guess
           git commit -am "Automated changes"
           git push origin HEAD:$GITHUB_HEAD_REF
