@@ -16,25 +16,27 @@ Welcome to Weat, a new meal delivery service that brings the restaurant experien
 Weat is in its in initial engineering phases. This API is a prototype, from which later versions of Weat will evolve. We appreciate any feedback and support!  
    
 ## Overview
-Using Python3, this API implements a mock backend database, as well as prototypes for Weat's frontend and backend services. As of now, the database is run off of local machines for complete control of server-client interactions. In later versions, Weat will likely use [Firestore](https://cloud.google.com/firestore/) and other Google Cloud services, such as authentication.
+Using Python3, this API implements a mock backend [database](#Database), as well as prototypes for Weat's [frontend](#Frontend) [backend](#Backend) services. As of now, the database is run off of local machines for complete control of server-client interactions. In later versions, Weat will likely use [Firestore](https://cloud.google.com/firestore/) and other Google Cloud services, such as authentication.
 
 ## Database
+### Objects
 Weat's Database stores four main objects:  
-1. **Customer**: Information about users, including name, address, and other required data.
-2. **Restaurant**: Representations of all the restaurants delivering meals on Weat.
-3. **Item**: Anything available for order is stored as an item.
-4. **Order**: Information about customer purchases.  
+1. **[Customer](#Customer)**: Information about users, including name, address, and other required data.
+2. **[Restaurant](#Restaurant)**: Representations of all the restaurants delivering meals on Weat.
+3. **[Item](#Item)**: Anything available for order is stored as an item.
+4. **[Order](#Order)**: Information about customer purchases.  
 
 Each of these objects are stored as standard Python dictionaries. The database keeps track of each object with a unique ID, which is assigned at the object's creation. Methods for adding, removing, and retrieving each are generally included in Database.py as `add[Object Name]()`, `remove[Object Name]()`, and `get[Object Name]()` (for example, `addRestaurant()`. See the objects' documentations below for more details.  
-  
-The database is created by passing dictionary into its constructor. This dictionary is expected to contain the following key-value pairs (with all keys as strings):
+
+### Instantiation
+The database can be instantiated in three different ways by passing `None`, the string `'empty'`, or a custom dictionary into its constructor. If `None` is passed into the database constructor **(recommended)**, a mock database is instantiated from createDatabase.py. If the string `'empty'` is passed in, the database is instantiated with no data. Otherwise, a dictionary with custom data can be used to create the database, although it must follow this format: (with all keys as strings):
 - customers: a list of dictionaries representing customers
 - restaurants: a list of dictionaries representing restaurants
 - items: a list of dictionaries representing items
 - orders: a list of dictionaries representing orders
-- ids: a list of unique ids, created and maintained by the database  
+- ids: a list of unique ids
+- logins: a mapping of mock usernames to mock passwords, which are automatically generated in createDatabase.py
 
-If `None` is passed into the database constructor **(recommended)**, a mock database is instantiated from createDatabase.py. If the string `'empty'` is passed in, the database is instantiated with no data. Otherwise, a dictionary with custom data can be used to create the database, although it must follow the above format.
 
 ### Customer
 Each customer is stored as a dictionary with the following key-value pairs, where all keys are strings:
@@ -76,7 +78,31 @@ Calling `addOrder(custId, restId, itemId, timestamp)` adds an order to the datab
 Check back soon for documentation on Weat's frontend!
 
 ## Backend
+Weat's backend uses [Flask](https://flask.palletsprojects.com/en/1.1.x/) to handle client requests and return JSON data from the [database](#Database). Backend actions are currently distinguished by pointing the browser to a specific URL, and providing supplementary parameters. Logging in with a valid username and password yields a key, which is required for all other actions. The currently supported actions are:  
+- [Login](#Login)
+- [Get by ID](#Get-by-ID) 
+- [Get restaurants](#Get-restaurants)
+- [Get items](#Get-items)
+- [Get customer orders](#Get-customer-orders)  
+  
+### login
+Use the path `/login?username=[USERNAME]&password=[PASSWORD]` to simulate logging in to Weat. Two parameters are required:
+- username: a valid username in the database
+- password: a valid password in the database that corresponds to the provided username  
+If a valid username and password pair is provided, a unique key and user ID are returned. The provided key is necessary for access to all of the other actions.  
 
+### Get by ID
+To get any object from the database by its ID, navigate to `/getById?id=[ID]&key=[KEY]`, where `[ID]` is the object's ID and `[KEY]` is a valid key returned from a successful [login](#Login). If the key is accepted and the provided ID exists, database object is returned in JSON format. 
+
+### Get restaurants
+To get all restaurants in the database, navigate to `/getRestaurants?key=[KEY]`, where `[KEY]` is a valid key returned from a successful [login](#Login). If the key is accepted, all restaurants in the database are returned in JSON format. 
+
+### Get items
+To get all items in the database, navigate to `/getItems?key=[KEY]`, where `[KEY]` is a valid key returned from a successful [login](#Login). If the key is accepted, all items in the database are returned in JSON format. 
+
+### Get customer orders
+To get any customer's orders, navigate to `/getCustomerOrders?id=[ID]&key=[KEY]`, where `[ID]` is the ID of the *customer*, and `[KEY]` is a valid key returned from a successful [login](#Login). If the key is accepted, that customer's orders are returned in JSON format. 
+  
 ```eval_rst
 * :ref:`genindex`
 * :ref:`modindex`
