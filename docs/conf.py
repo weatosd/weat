@@ -29,6 +29,7 @@ def setup(app):
 project = 'weat'
 copyright = '2020, Lucas Jerez, Tommy Gomez'
 author = 'Lucas Jerez, Tommy Gomez'
+master_doc = 'index'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
