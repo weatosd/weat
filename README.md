@@ -37,18 +37,6 @@ Navigate to ```./backend```, specify the data you want the database to have in a
 
 Head over to <a href="https://weat.readthedocs.io/en/latest/?badge=latest">**weat's documentation**</a>!
 
-
-### Database.py
-**Database** structure:
-  - The data is stored in a map of lists of maps. There are 4 major components: Customers (users who order food), Restaurants, Items (meals provided by restaurants), and Orders. All components have a unique **id**, which is used to reference other components. 
-  - Items depend on Restaurants, and Orders depend on Customers, and Items (and by extension depend on Restaurants). These dependencies are defined dictionaries containing the id's of dependencies.
-  - A list of all the ids are present in the ids list
-
-Sample **Database** functions and usage:
-  - ```addCustomer(name, address)``` created a new Customer with the parameters provided, and adds them to the database. The same can be done with Restaurants, Items, and Orders
-  - ```removeById(id)``` takes in a valid id (one that's present in ids), and removes the component corresponding to that id in the database, and all of its dependencies. For example, ```removeById(sampleCustomerId)``` will remove the Customer with ```id=sampleCustomerId```, and all of its orders
-  - ```getCustomer(id)``` returns the dictionary defining the Customer with id. The same can be done with Restaurants, Items, and Orders.
-  
 ### Testing
   - pytest runs **<a href="https://github.com/weatosd/weat/blob/main/test_database.py">test_database.py</a>** that tests the Database's functions and structure.
 
