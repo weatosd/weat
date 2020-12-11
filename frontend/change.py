@@ -1,2 +1,2 @@
-print("rarrandom")
+print("raandom")
 
