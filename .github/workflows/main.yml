@@ -6,11 +6,11 @@ jobs:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
-      - name: autopep8
-        uses: peter-evans/autopep8@v1
+      - name: black
+        uses: psf/black@stable
         with:
           args: --exit-code --recursive --in-place --aggressive --aggressive .
       - name: Check for modified files
