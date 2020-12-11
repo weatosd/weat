@@ -13,17 +13,19 @@ loggedInUsers = set()
 # first post request user should call
 @app.route("/login", methods=["POST"])
 def login():
-<<<<<<< HEAD
-    print(request.form)
+
+
+<< << << < HEAD
+   print(request.form)
     username = request.form['username']
     password = request.form['password']
-=======
-    username = request.form["username"]
+== == == =
+   username = request.form["username"]
     password = request.form["password"]
->>>>>>> 922ab4a8d932387c8f9ff77724320499ba5cd1c3
-    # print(db.data)
+>>>>>> > 922ab4a8d932387c8f9ff77724320499ba5cd1c3
+   # print(db.data)
 
-    if username not in db.data["logins"]:
+   if username not in db.data["logins"]:
         return jsonify("incorrect username")
 
     if password != db.data["logins"][username]["password"]:

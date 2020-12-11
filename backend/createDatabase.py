@@ -21,7 +21,8 @@ def createDatabase():
         customers.append(newCustomer)
 
     # create restaurant list of dicts
-    # taken from https://stackoverflow.com/questions/59199879/python-random-lunch-generator-print-restaurant-type
+    # taken from
+    # https://stackoverflow.com/questions/59199879/python-random-lunch-generator-print-restaurant-type
     restaurantDict = {
         "pizzaList": [
             "Chuck E. Cheese",
@@ -142,7 +143,8 @@ def createDatabase():
         ids.append(newId)
         newItem["id"] = newId
         newItem["restId"] = restaurant["id"]
-        newItem["name"] = restaurant["cuisine"] + restaurant["name"].replace(" ", "")
+        newItem["name"] = restaurant["cuisine"] + \
+            restaurant["name"].replace(" ", "")
         newItem["price"] = round(random.random() * 20 + 5, 2)
         items.append(newItem)
 
@@ -190,7 +192,8 @@ def createLogins(listOfDicts, logins):
     for item in listOfDicts:
 
         mockUsername = item["name"].replace(" ", "")
-        mockPassword = item["name"].split(" ")[0] + str(random.randint(100, 999))
+        mockPassword = item["name"].split(
+            " ")[0] + str(random.randint(100, 999))
         itemId = item["id"]
 
         logins[mockUsername] = {"password": mockPassword, "id": itemId}

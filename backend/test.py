@@ -1,10 +1,10 @@
 import requests
-import socket   
-import json 
+import socket
+import json
 import random
-hostname = socket.gethostname()    
+hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
- 
+
 f = open('defaultConfig.json', 'r')
 
 # print(json.load(f))
@@ -16,11 +16,12 @@ print(username, password)
 
 loginObject = {'username': username, 'password': password}
 
-response = requests.post('http://127.0.0.1:5000/login', data = loginObject).json()
+response = requests.post(
+    'http://127.0.0.1:5000/login',
+    data=loginObject).json()
 
 # key = response['key']
 # id = response['id']
-
 
 
 # payload = {'key':key, 'id':int(id)}

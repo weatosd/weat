@@ -6,7 +6,8 @@ from .createDatabase import createDatabase
 class Database:
 
     data = {}
-    # Structure of database: root[customer[{}],restaurants[{}],items[{}],orders[{}]
+    # Structure of database:
+    # root[customer[{}],restaurants[{}],items[{}],orders[{}]
 
     #                           ROOT
     #          _________________________________________
@@ -22,7 +23,7 @@ class Database:
     def __init__(self, data=None):
         # with open('./defaultConfig.json') as json_file:
         #     self.data = json.load(json_file)
-        if data == None:
+        if data is None:
             db = createDatabase()
             self.data = db
         elif data == "empty":

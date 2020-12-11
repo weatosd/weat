@@ -12,6 +12,8 @@ mockData = db.data
 assert_true = check.is_true
 
 # other tests that modify the database should run this function
+
+
 def database_structure(data):
     test_basic_structure(data)
     test_unique_ids(data)
@@ -145,8 +147,10 @@ def test_ids(data=None):
         assert_true(id in data["ids"])
 
     assert_true(
-        len(customers) + len(restaurants) + len(items) + len(orders) == len(ids)
-    )
+        len(customers) +
+        len(restaurants) +
+        len(items) +
+        len(orders) == len(ids))
 
 
 fake = faker.Faker()
@@ -168,9 +172,17 @@ def test_add_customer():
 
 def test_add_restaurant():
     # random name of restaurant will in form "randomName"
-    name = random.choice(randomNameAddress["names"]).split(" ")[1] + "'s Restaurant"
+    name = random.choice(randomNameAddress["names"]).split(" ")[
+        1] + "'s Restaurant"
     address = random.choice(randomNameAddress["addresses"])
-    cuisines = ["Pizza", "Sandwich", "Mexican", "Burger", "Healthy", "Fancy", "Asian"]
+    cuisines = [
+        "Pizza",
+        "Sandwich",
+        "Mexican",
+        "Burger",
+        "Healthy",
+        "Fancy",
+        "Asian"]
     cuisine = random.choice(cuisines)
     newRestaurant = db.addRestaurant(name, address, cuisine)
     database_structure(db.data)
