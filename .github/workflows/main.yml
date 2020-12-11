@@ -6,11 +6,11 @@ jobs:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
         with:
           ref: ${{ github.head_ref }}
-      - name: black
-        uses: psf/black@stable
+      - name: autopep8
+        uses: peter-evans/autopep8@v1
         with:
           args: --exit-code --recursive --in-place --aggressive --aggressive .
       - name: Check for modified files
@@ -23,4 +23,4 @@ jobs:
           git config --global user.email 'ltj2105@columbia.edu'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "Automated changes"
-          git push origin HEAD:${{ github.head_ref }}
+          git push origin ${{ github.head_ref }}
