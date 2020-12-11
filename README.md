@@ -13,7 +13,6 @@
 [![Build Status](https://travis-ci.org/weatosd/weat.svg?branch=api)](https://travis-ci.org/weatosd/weat)
 [![Code style: autopep8](https://img.shields.io/badge/code%20style-autopep8-yellowgreen)](https://github.com/peter-evans/autopep8)
 [![Documentation Status](https://readthedocs.org/projects/weat/badge/?version=latest)](https://weat.readthedocs.io/en/latest/?badge=latest)
-![Lint](https://github.com/weatosd/weat/workflows/Lint/badge.svg)
 
 ## about the project
 
