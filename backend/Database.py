@@ -4,6 +4,8 @@ from .createDatabase import createDatabase
 
 class Database:
 
+    #this is a new comment
+
     data = {}
     # Structure of database: root[customer[{}],restaurants[{}],items[{}],orders[{}]
 
